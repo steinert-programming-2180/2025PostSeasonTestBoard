@@ -29,8 +29,10 @@ public final class Constants {
   public static class BoardConstants {
     public static final int boardMotorID = 2;
     public static final int boardMotor2ID = 3;
+    public static final int pneumaticsID = 4;
     public static final int limitSwitchPort=0;
     public static final int lightsID=10;
+
   }
 
 }

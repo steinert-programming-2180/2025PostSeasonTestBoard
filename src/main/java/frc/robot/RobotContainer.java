@@ -8,6 +8,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Board;
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.ExampleSubsystem;
 
 import java.lang.ModuleLayer.Controller;
@@ -22,10 +23,9 @@ public class RobotContainer {
 
   private final CommandPS5Controller PS5Controller = new CommandPS5Controller(OperatorConstants.kDriverControllerPort);
   private final Board board = new Board();
+  private final Pneumatics pneumatics = new Pneumatics();
 
   public RobotContainer() {
-    
-
     configureBindings();
   }
 
@@ -40,9 +40,9 @@ public class RobotContainer {
     whileTrue(new InstantCommand(() -> board.reverseMotor())).
     whileFalse(new InstantCommand(() -> board.stopMotor()));
 
-    PS5Controller.circle().
-    whileTrue(new InstantCommand(() -> board.spinMotor2())).
-    whileFalse(new InstantCommand(() -> board.stopMotor2()));
+    //PS5Controller.circle().
+    //whileTrue(new InstantCommand(() -> board.spinMotor2())).
+    //whileFalse(new InstantCommand(() -> board.stopMotor2()));
 
     //setpoints
     PS5Controller.povUp().
@@ -61,6 +61,10 @@ public class RobotContainer {
     PS5Controller.L1().whileTrue(new InstantCommand(() -> board.greenBlinkin())).
     whileFalse(new InstantCommand(() -> board.greenBlinkin()));
 
+    //Pneumatics
+    PS5Controller.circle()
+    .whileTrue(new InstantCommand(() -> pneumatics.toggleSolenoidTrue()))
+    .whileFalse(new InstantCommand(() -> pneumatics.toggleSolenoidFalse()));
   }
 
   

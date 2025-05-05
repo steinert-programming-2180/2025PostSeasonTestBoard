@@ -28,7 +28,7 @@ public class Board extends SubsystemBase{
     SparkMax boardMotor2;
     SparkMaxConfig boardMotor2Config;
     double desiredAngle;
-    private Spark m_blinkinSpark;
+    Spark m_blinkinSpark;
     
 
     public Board(){
@@ -100,9 +100,6 @@ public class Board extends SubsystemBase{
     }
 
     public void setAngle(double angle){
-        // boardMotor.getClosedLoopController().setReference(angle+WristConstants.rotationOffset,
-        // ControlType.kPosition, ClosedLoopSlot.kSlot0);
-
         boardMotor.getClosedLoopController().setReference(
         //PID
         angle+WristConstants.rotationOffset, ControlType.kPosition, ClosedLoopSlot.kSlot0,
